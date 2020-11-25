@@ -1,0 +1,23 @@
+{
+  "name": "react-c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/latimercaleb/react-C.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/latimercaleb/react-C/issues"
+  },
+  "homepage": "https://github.com/latimercaleb/react-C#readme",
+  "dependencies": {
+    "create-react-app": "^4.0.1",
+    "myapp": "^0.0.0-1"
+  }
+}
