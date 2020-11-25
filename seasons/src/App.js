@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // Should port over translator app as well
   return (
     <div className="App">
       <header className="App-header">
