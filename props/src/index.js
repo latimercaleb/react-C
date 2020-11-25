@@ -1,17 +1,89 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import faker from 'faker';
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
+// This component is huge and bad design, refactor it
+const NaiveApp = () => {
+    return(
+        <div className="ui container comments">
+            <h1>Naive App: Unrefined</h1>
+            <div className="comment">
+                <a href="/" className="avatar">
+                    <img alt="avatar" src={faker.image.fashion()}/>
+                </a>
+                <div className="content">
+                    <a href="/" className="author"> Sett</a>
+                    <div className="metadata">
+                        <span className="date">Today at 3pm</span>
+                    </div>
+                    <div className="text">First post component</div>
+                </div>
+            </div>
+            <div className="comment">
+                <a href="/" className="avatar">
+                    <img alt="avatar" src={faker.image.fashion()}/>
+                </a>
+                <div className="content">
+                    <a href="/" className="author"> Sett</a>
+                    <div className="metadata">
+                        <span className="date">Today at 3pm</span>
+                    </div>
+                    <div className="text">First post component</div>
+                </div>
+            </div>
+            <div className="comment">
+                <a href="/" className="avatar">
+                    <img alt="avatar" src={faker.image.fashion()}/>
+                </a>
+                <div className="content">
+                    <a href="/" className="author"> Sett</a>
+                    <div className="metadata">
+                        <span className="date">Today at 3pm</span>
+                    </div>
+                    <div className="text">First post component</div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        
+    );
+};
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const SmartApp = () => {
+  return (
+    <div className="ui container comments">
+        <h1>Smart App: Refactored</h1>
+        <ApprovalCard>
+            <CommentDetail author="Sett" 
+                           commentText="The boss is here!" 
+                           avatar={faker.image.fashion()} 
+                           timeOfPost="Today, at 2:52 PM"/>
+        </ApprovalCard>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        <ApprovalCard>
+            <CommentDetail author="Ahri" 
+                           commentText="Should I make your pulse rise? Or stop!?" 
+                           avatar={faker.image.fashion()} 
+                           timeOfPost="Yesterday, at 1:00 PM"/>
+        </ApprovalCard>
+
+        <ApprovalCard>
+            <CommentDetail author="Jhin" 
+                           commentText="My... performance has begun!"
+                           avatar={faker.image.fashion()} 
+                           timeOfPost="Two Days ago, at 9:00 AM"/>
+        </ApprovalCard>
+
+
+        <ApprovalCard>
+            <CommentDetail author="Jinx" 
+                           commentText="I'm really getting bored" 
+                           avatar={faker.image.fashion()} 
+                           timeOfPost="One Week ago, 5:58 PM"/>            
+        </ApprovalCard> 
+    </div>
+  );  
+};
+// ReactDOM.render(<NaiveApp />, document.querySelector('#root'));
+ReactDOM.render(<SmartApp />, document.querySelector('#root'));
