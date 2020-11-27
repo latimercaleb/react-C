@@ -1,4 +1,6 @@
 import React from 'react';
+import SeasonDisplay from './SeasonDisplay';
+import Loader from './Loader';
 
 class App extends React.Component{
   constructor(props){
@@ -27,7 +29,7 @@ class App extends React.Component{
     console.log('Update called: Component is re-rendered');
   }
 
-  render(){
+  renderBody(){
     if(this.state.ErrorMessage){
       return( 
         <div>
@@ -36,20 +38,23 @@ class App extends React.Component{
       );
     }
     else if(this.state.Latitude){
-      return(
-        <div>
-          <p>Latitude: {this.state.Latitude} </p>
-          <p>Longitude: {this.state.Longitude} </p>
-        </div>
-      );
+      return <SeasonDisplay 
+                    latitude={this.state.Latitude} 
+                    longitude={this.state.Longitude}/>;
     }
    else{
      return(
-       <div>
-         Loading...
-       </div>
+      <Loader loadingMessage="Please accept location request..."/>
      );
    }
+  }
+
+  render(){
+    return (
+      <div style={{border: '10px dashed teal'}}> 
+        {this.renderBody()}
+      </div>
+    );
   }
 }
 
