@@ -14,22 +14,26 @@ class SearchBar extends React.Component{
         });
     }
 
-    onFormSubmit(evt){
+    onFormSubmit= (evt) => {
         evt.preventDefault();
         // Name event thing in parent
-        // this.props.onSubmitHandler(this.state.term);
+         this.props.ytFetch(this.state.term);
     }
+
+    onChangeHandler = (event) => {
+        this.setState({term: event.target.value});
+    }
+
 
     render(){
         return (
             <div className="ui segment search-bar">
-                Use named anons for callback events
                <form className="ui form"
-                      onSubmit={(evt) => this.onFormSubmit(evt)}>
+                      onSubmit={this.onFormSubmit}>
                    <div className="field">
                        <label>Find A Video</label>
                         <input type="text" 
-                               onChange={(e) => this.setState({term: e.target.value})}
+                               onChange={this.onChangeHandler}
                                value={this.state.term}/>
                    </div>
                </form>
