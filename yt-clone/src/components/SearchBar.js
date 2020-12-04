@@ -1,11 +1,6 @@
 import React from 'react';
 class SearchBar extends React.Component{
 
-    /*
-        1. Name event in parent
-        2. Remove inline callbacks and use declare arrow functions
-        3. Set up YT api
-    */
     state = {term: ''};
 
     onInputChange(evt){
@@ -16,7 +11,6 @@ class SearchBar extends React.Component{
 
     onFormSubmit= (evt) => {
         evt.preventDefault();
-        // Name event thing in parent
          this.props.ytFetch(this.state.term);
     }
 

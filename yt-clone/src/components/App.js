@@ -1,12 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import api, {DEFAULT_PARAMS} from '../api/youtube';
 import SearchBar from './SearchBar';
 
 // Root component
 class App extends React.Component{
+    
+    state={videos:[]};
 
-    ytFetchHandler = (searchTerm) => {
-        console.log(searchTerm);
+    ytFetchHandler = async (searchTerm) => {
+        const response= await api.get("/search", {
+            params: {
+                q: searchTerm,
+                ...DEFAULT_PARAMS
+            }
+        });
+
+        console.log(response.data.items);
+        this.setState({videos: response.data.items});
     }
 
     render(){
