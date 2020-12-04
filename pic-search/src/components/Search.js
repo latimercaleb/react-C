@@ -22,7 +22,7 @@ class SearchBar extends React.Component{
                        <label>Image Search</label>
                         <input type="text" 
                                onChange={(e) => this.setState({term: e.target.value})} 
-                               onClick={(evt) => console.log('Clicked')}
+                               onClick={(evt) => console.log('Click evt fired')}
                                value={this.state.term}/>
                    </div>
                </form>
