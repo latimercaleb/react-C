@@ -1,7 +1,7 @@
 import React from 'react';
 import api, {DEFAULT_PARAMS} from '../api/youtube';
 import SearchBar from './SearchBar';
-
+import VideoList from './VideoList';
 // Root component
 class App extends React.Component{
     
@@ -23,7 +23,7 @@ class App extends React.Component{
         return(
             <div className="ui-container">
                 <SearchBar ytFetch={this.ytFetchHandler}/>
-                Start
+                <VideoList videos={this.state.videos} />
             </div>
         );
     }
