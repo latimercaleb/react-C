@@ -19,6 +19,23 @@ p {
 .title {
   font-size: large;
 }
+
+.animal-list {
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.animal-wrapper {
+    position: relative;
+    border: 1px solid lightblue;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0px 3px 4px aliceblue;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

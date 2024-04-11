@@ -5,32 +5,32 @@ import dog from './svg/dog.svg';
 import gator from './svg/gator.svg';
 import heart from './svg/heart.svg';
 import horse from './svg/horse.svg';
+import snake from './svg/snake.svg';
+import rat from './svg/rat.svg';
 import { useState } from 'react';
 import './Show.css';
 
-// TODO: My impl has a bug, you know what it is. Figure it out and fix it up before moving on to the next section, work on it while you review
-const imgMap = { bird, cat, cow, dog, gator, horse };
+const imgMap = { bird, cat, cow, dog, gator, horse, snake, rat };
 
-function Show({ animalType }) {
-    const [heartClick, setHeartClick] = useState(0);
-    const clickHandler = () => {
-        setHeartClick(heartClick + 1)
-    };
+function Show({ animalType, index }) {
+	const [heartClick, setHeartClick] = useState(0);
+	const clickHandler = () => {
+		setHeartClick(heartClick + 1);
+	};
 
 	return (
-		<ul className='animal-list'>
-			{animalType.map((animal, index) => {
-				return (
-					<li className='animal-wrapper'>
-                        {animal}
-                        <div onClick={clickHandler}>
-                            <img className='animal'src={imgMap[animal]}></img>
-                            <img className='animal-heart'src={heart} style={{width: `${10 + 10 * heartClick}px`}}></img>
-                        </div>
-                    </li>
-				);
-			})}
-		</ul>
+		<div onClick={clickHandler}>
+			{animalType}
+			<img
+				className="animal"
+				alt="animal"
+				src={imgMap[animalType]}></img>
+			<img
+				className="animal-heart"
+				alt="animal heart"
+				src={heart}
+				style={{ width: `${10 + 10 * heartClick}px` }}></img>
+		</div>
 	);
 }
 
