@@ -1,0 +1,25 @@
+.animal-list {
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.animal-wrapper {
+    position: relative;
+    border: 1px solid lightblue;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0px 3px 4px aliceblue;
+}
+
+.animal {
+    height: 200px
+}
+
+.animal-heart {
+    position: absolute;
+    bottom:10%;
+    right: 10%;
+}
