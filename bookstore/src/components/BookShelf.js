@@ -1,7 +1,14 @@
-function BookShelf() {
+import Book from "./Book";
+function BookShelf({books}) {
     return (
-        <div>
-            Render new booklist
+        <div className="book-list">
+            <ol>
+                {books.map(bk => {
+                    return (<li key={bk.id}>
+                        <Book book={bk}></Book>
+                    </li>)
+                })}
+            </ol>
         </div>
     );
 }
