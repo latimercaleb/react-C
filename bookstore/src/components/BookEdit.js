@@ -1,5 +1,5 @@
 import { useState } from 'react';
-function BookEdit({defaultTitle, saveTitle}) {
+function BookEdit({defaultTitle, saveTitle,}) {
 	const [title, setTitle] = useState(defaultTitle);
 	const handeSubmit = (evt) => {
 		evt.preventDefault();

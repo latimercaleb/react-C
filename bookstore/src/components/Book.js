@@ -1,6 +1,6 @@
 import BookEdit from './BookEdit';
 import { useState } from 'react';
-function Book({ book, deleteBook }) {
+function Book({ book, deleteBook, editBook }) {
 	const [showEdit, setShowEdit] = useState(false);
 	const handleClick = () => {
 		deleteBook(book.id);
@@ -10,18 +10,23 @@ function Book({ book, deleteBook }) {
 		setShowEdit(!showEdit);
 	};
 
-    const handleSaveTitle = (newTitle) => {
-        console.log(newTitle);
+	const handleSaveTitle = (newTitle) => {
 		setShowEdit(!showEdit);
+		editBook(book.id, newTitle);
 	};
 
 	let content = <h3>{book.title}</h3>;
 	if (showEdit) {
-		content = <BookEdit defaultTitle={book.title} saveTitle={handleSaveTitle}></BookEdit>;
+		content = (
+			<BookEdit
+				defaultTitle={book.title}
+				saveTitle={handleSaveTitle}></BookEdit>
+		);
 	}
 	return (
 		<div className="book-show">
-			<div >{content}</div>
+            <img src={`https://picsum.photos/seed/${book.id}/300/200`}></img>
+			<div>{content}</div>
 			<div className="actions">
 				<button
 					onClick={handleEditClick}
