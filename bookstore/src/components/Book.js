@@ -1,9 +1,11 @@
 import BookEdit from './BookEdit';
-import { useState } from 'react';
-function Book({ book, deleteBook, editBook }) {
+import { useState, useContext } from 'react';
+import LibraryContext from '../context/books';
+function Book({ book}) {
 	const [showEdit, setShowEdit] = useState(false);
+    const {handleDeleteBook, handleEditBook} = useContext(LibraryContext);
 	const handleClick = () => {
-		deleteBook(book.id);
+		handleDeleteBook(book.id);
 	};
 
 	const handleEditClick = () => {
@@ -12,7 +14,7 @@ function Book({ book, deleteBook, editBook }) {
 
 	const handleSaveTitle = (newTitle) => {
 		setShowEdit(!showEdit);
-		editBook(book.id, newTitle);
+		handleEditBook(book.id, newTitle);
 	};
 
 	let content = <h3>{book.title}</h3>;

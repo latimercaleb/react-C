@@ -1,6 +1,8 @@
-import { useState } from 'react';
-function BookNew({ newBook }) {
+import { useState,useContext } from 'react';
+import LibraryContext from '../context/books';
+function BookNew() {
 	const [bookTitle, setBookTitle] = useState('');
+	const {handleAddNewBook} = useContext(LibraryContext);
 	const handleNewBookTitle = (inputBookTitleEvent) => {
 		console.log(inputBookTitleEvent);
 		const newBookTitle = inputBookTitleEvent.target.value;
@@ -9,7 +11,7 @@ function BookNew({ newBook }) {
 	const handleSubmit = (submitEvent) => {
 		console.log(submitEvent);
 		submitEvent.preventDefault();
-		newBook(bookTitle);
+		handleAddNewBook(bookTitle);
 		setBookTitle('');
 	};
 	return (
