@@ -9,6 +9,12 @@ function App() {
 		ctx.getBooks();
 	}, []);
 
+	/** Alternatively can leverage this to remove stale ref warning in console about missing dependency without recursive api calls, leverage useCallback() in provider
+	 * 	useEffect(() => {
+		ctx.stableLoadBooks();
+	}, [ctx.stableLoadBooks]);
+	 */
+
 	return (
 		<div className="app">
 			<header className="App-header">

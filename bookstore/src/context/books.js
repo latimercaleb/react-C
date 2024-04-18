@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback } from 'react';
 import axios from 'axios';
 
 const LibraryContext = createContext();
@@ -7,10 +7,12 @@ function CustomProvider({ children }) {
 	const [message, setMessage] = useState('Hello from context!');
 	const [bookData, setBookData] = useState([]);
 
-	const loadBooks = async () => {
+	const loadBooks =  async() => {
 		const resp = await axios.get('http://localhost:3001/books');
 		setBookData(resp.data);
 	};
+
+	const stableLoadBooks = useCallback(loadBooks, []) // Could just wrap loadbooks with useCallback but its easier to read like this
 
 	const handleAddNewBook = async (newBook) => {
 		const resp = await axios.post('http://localhost:3001/books', {
@@ -42,6 +44,7 @@ function CustomProvider({ children }) {
 		bookData,
 		message,
 		getBooks: () => loadBooks(),
+		stableLoadBooks, // Note this will only work with a direct ref, referencing a ref like above will cause recursion bug
 		handleAddNewBook,
 		handleEditBook,
 		handleDeleteBook,
