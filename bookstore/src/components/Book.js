@@ -1,9 +1,11 @@
 import BookEdit from './BookEdit';
 import { useState, useContext } from 'react';
 import LibraryContext from '../context/books';
+
 function Book({ book}) {
 	const [showEdit, setShowEdit] = useState(false);
     const {handleDeleteBook, handleEditBook} = useContext(LibraryContext);
+	
 	const handleClick = () => {
 		handleDeleteBook(book.id);
 	};
@@ -25,9 +27,10 @@ function Book({ book}) {
 				saveTitle={handleSaveTitle}></BookEdit>
 		);
 	}
+
 	return (
 		<div className="book-show">
-            <img src={`https://picsum.photos/seed/${book.id}/300/200`}></img>
+            <img src={`https://picsum.photos/seed/${book.id}/300/200`} alt={book.title}></img>
 			<div>{content}</div>
 			<div className="actions">
 				<button

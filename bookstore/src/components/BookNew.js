@@ -1,32 +1,33 @@
-import { useState,useContext } from 'react';
+import { useState, useContext } from 'react';
 import LibraryContext from '../context/books';
 function BookNew() {
 	const [bookTitle, setBookTitle] = useState('');
-	const {handleAddNewBook} = useContext(LibraryContext);
+	const { handleAddNewBook } = useContext(LibraryContext);
+
 	const handleNewBookTitle = (inputBookTitleEvent) => {
-		console.log(inputBookTitleEvent);
 		const newBookTitle = inputBookTitleEvent.target.value;
 		setBookTitle(newBookTitle);
 	};
+
 	const handleSubmit = (submitEvent) => {
-		console.log(submitEvent);
 		submitEvent.preventDefault();
 		handleAddNewBook(bookTitle);
 		setBookTitle('');
 	};
+
 	return (
-		<div className='book-create'>
-            <h3>Add a new book</h3>
+		<div className="book-create">
+			<h3>Add a new book</h3>
 			<form onSubmit={handleSubmit}>
-				<div >
-					<label htmlFor="Book Create" >Title</label>
+				<div>
+					<label htmlFor="Book Create">Title</label>
 					<input
 						type="text"
 						value={bookTitle}
 						onChange={handleNewBookTitle}
-                        className='input'
+						className="input"
 					/>
-					<button className='button'>Create New Book</button>
+					<button className="button">Create New Book</button>
 				</div>
 			</form>
 		</div>
