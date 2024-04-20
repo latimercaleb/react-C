@@ -1,3 +1,7 @@
+
+.opener{
+  @apply text-3xl font-bold underline-offset-0 underline
+}
 .App {
   text-align: center;
 }

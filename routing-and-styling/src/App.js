@@ -19,13 +19,15 @@ function App() {
         </a>
       </header>
       <div>
-        <Button></Button>
+        <h1 className='opener'>App 5: The component library</h1>
+
+        <Button>Test</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button>Two</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button>3</Button>
       </div>
       <div>
         <Button></Button>
