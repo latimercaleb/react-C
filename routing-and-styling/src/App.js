@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from './Button'
+import { FiAperture } from "react-icons/fi";
+
 function App() {
+  function handleClick (){
+    console.log('Clicked')
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -21,28 +26,31 @@ function App() {
       <div>
         <h1 className='opener'>App 5: The component library</h1>
 
-        <Button>Test</Button>
+        <Button primary onClick={handleClick}>
+          <FiAperture></FiAperture>
+          Test 1
+        </Button>
       </div>
       <div>
-        <Button>Two</Button>
+        <Button secondary>Two 2</Button>
       </div>
       <div>
-        <Button>3</Button>
+        <Button success>3</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button warning>4</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button danger>5</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button success rounded outlined>6</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button success rounded>7</Button>
       </div>
       <div>
-        <Button></Button>
+        <Button primary outlined>8</Button>
       </div>
     </div>
   );
