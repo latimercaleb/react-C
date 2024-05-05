@@ -1,22 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import Button from '../src/components/Button'
-import { FiAperture } from "react-icons/fi";
-import Accordion from './components/Accordion';
-
+import Dropdown from './components/Dropdown';
 function App() {
   const items = [
     {
       label: 'Hello',
-      content: 'Testing Content'
+      value: 'x'
     },
     {
-      label: 'Something else',
-      content: 'More Content'
+      label: 'Goodbye',
+      value: 'x2'
     },
     {
-      label: 'Final',
-      content: 'Last Content'
+      label: 'Suprise',
+      value: 'x3'
     }
   ]
   function handleClick (){
@@ -24,7 +20,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Accordion displayData={items} />
+      <Dropdown options ={items} />
     </div>
   );
 }
