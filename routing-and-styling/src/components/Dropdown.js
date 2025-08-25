@@ -9,12 +9,12 @@ function Dropdown({options, select, onSelect}){
         console.log(e)
         onSelect(e)
     };
-    const optionsToRender = options.map(x => {
-        return <div id={x.value} onClick={() => handleOptionClick(x)}>
+    const optionsToRender = options.map((x,idx) => {
+        return <div key={idx} id={x.value} onClick={() => handleOptionClick(x)}>
             {x.label}
         </div>
     });
-    return <div>
+    return <div style={{border: '2px dashed darkseagreen'}}>
         <div onClick={handleClick}>{ select?.label || 'Select...'}</div>
         {/* If isOpen is true the div is rendered, if not nothing is displayed */}
         {isOpen && <div>{optionsToRender}</div>}

@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Button from './Button';
 import { FiAperture } from 'react-icons/fi';
+import Accordion from '../Accordion';
 
 function AccordionPage() {
 	const items = [

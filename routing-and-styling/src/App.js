@@ -28,7 +28,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Dropdown options ={items} select={selection} onSelect ={handleSelect}/>
+      <label>Custom Dropdown Basic</label>
+        <Dropdown options ={items} select={selection} onSelect ={handleSelect}/>
     </div>
   );
 }
