@@ -65,7 +65,7 @@ function Accordion({ displayData, ...otherProps }) {
 		});
 	}
 	return (
-		<div className="border-x boprder-t rounded">
+		<div className="border-x border-t rounded">
 			Hello from accordion {displayAccordionItems3}
 		</div>
 	);

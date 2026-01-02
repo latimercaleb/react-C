@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/latimercaleb/react-C#readme",
   "dependencies": {
+    "create-next-app": "^15.5.2",
     "create-react-app": "^4.0.1",
     "myapp": "^0.0.0-1"
   }
