@@ -1,10 +1,8 @@
 import { Heading, HStack, Image, Text, VStack, useColorModeValue} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-// TODO: Pick up with step 3, test this either in the lab or pull it down locally to test
 const Card = ({ title, description, imageSrc }) => {
   const darkTextColor = useColorModeValue("gray.800", "gray.50");
-  // Implement the UI for the Card component according to the instructions.
     return (
       <>
         <VStack

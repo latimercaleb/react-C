@@ -29,12 +29,14 @@ const LandingSection = () => {
       comment: "",
     },
     onSubmit: (values) => {
-      // TODO: Figure out an implementation of the alert hook
-      console.log(values);
-      console.log("Submitting form...");
-      submit("no url needed", values);
-      console.log(response)
-      console.log(isLoading)
+      submit("https://example.com/api/contact", values);
+      const {type, message} = response || {};
+      if (type && message) {
+        onOpen(type, message);
+        if (type === "success") {
+          formik.resetForm();
+        }
+      }
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First name is required"),
