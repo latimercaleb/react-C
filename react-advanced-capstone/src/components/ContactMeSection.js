@@ -20,16 +20,23 @@ import {useAlertContext} from "../context/alertContext";
 const LandingSection = () => {
   const {isLoading, response, submit} = useSubmit();
   const { onOpen } = useAlertContext();
-/*
-firstName: "",
-email: "",
-type
-comment
-*/
+
   const formik = useFormik({
-    initialValues: {},
-    onSubmit: (values) => {},
-    validationSchema: Yup.object({}),
+    initialValues: {
+      firstName: "",
+      email: "",
+      type: "",
+      comment: "",
+    },
+    onSubmit: (values) => {
+      submit("no url needed", values);
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string().required("First name is required"),
+      email: Yup.string().email("Invalid email address").required("Email is required"),
+      type: Yup.string().required("Type of enquiry is required"),
+      comment: Yup.string().required("Comment is required"),
+    }),
   });
 
   return (
