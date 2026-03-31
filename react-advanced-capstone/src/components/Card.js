@@ -1,29 +1,28 @@
-import { Heading, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Heading, HStack, Image, Text, VStack, useColorModeValue} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
 // TODO: Pick up with step 3, test this either in the lab or pull it down locally to test
 const Card = ({ title, description, imageSrc }) => {
+  const darkTextColor = useColorModeValue("gray.800", "gray.50");
   // Implement the UI for the Card component according to the instructions.
-  // You should be able to implement the component with the elements imported above.
-  // Feel free to import other UI components from Chakra UI if you wish to.
-    <Card.Root maxW="sm" overflow="hidden">
-      <Image
-        src= {imageSrc}
-        alt="Card Image"
-      />
-      <Card.Body gap="2">
-        <Card.Title>{ title}</Card.Title>
-        <Card.Description>
-          { description}
-        </Card.Description>
-      </Card.Body>
-      <Card.Footer gap="2">
-        <Button variant="ghost">See More</Button>
-        <FontAwesomeIcon icon={faArrowRight} size="1x" />
-      </Card.Footer>
-    </Card.Root>
-  return null;
+    return (
+      <>
+        <VStack
+            backgroundColor="white"
+            borderRadius="xl"
+            overflow="hidden"
+            alignItems="start">
+          <Image src={imageSrc} alt={title} borderRadius="xl" />
+          <VStack p={4} alignItems="start" spacing={4}>
+            <Heading size="md" color={darkTextColor}>{title}</Heading>
+            <Text color="gray.600" fontSize="lg">{description}</Text>
+            <HStack spacing={2}>
+              <Text color={darkTextColor}>See more <FontAwesomeIcon icon={faArrowRight} size="1x" /></Text>
+            </HStack>
+          </VStack>
+        </VStack>
+      </>
+    );
 };
 
 export default Card;
