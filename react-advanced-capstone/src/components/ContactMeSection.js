@@ -29,12 +29,16 @@ const LandingSection = () => {
       comment: "",
     },
     onSubmit: (values) => {
+      // TODO: Figure out an implementation of the alert hook
+      console.log(values);
+      console.log("Submitting form...");
       submit("no url needed", values);
+      console.log(response)
+      console.log(isLoading)
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First name is required"),
       email: Yup.string().email("Invalid email address").required("Email is required"),
-      type: Yup.string().required("Type of enquiry is required"),
       comment: Yup.string().required("Comment is required"),
     }),
   });
@@ -60,7 +64,7 @@ const LandingSection = () => {
                   name="firstName"
                   {...formik.getFieldProps('firstName')}
                 />
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={formik.touched.email && formik.errors.email}>
                 <FormLabel htmlFor="email">Email Address</FormLabel>
@@ -70,15 +74,13 @@ const LandingSection = () => {
                   type="email"
                   {...formik.getFieldProps('email')}
                 />
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={formik.touched.type && formik.errors.type}>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" name="type" {...formik.getFieldProps('type')}>
+                <Select id="type" name="type" {...formik.getFieldProps('type')} bg="black" color="white" sx={{ '> option': { background: 'black', color: 'white' } }}> 
                   <option value="hireMe">Freelance project proposal</option>
-                  <option value="openSource">
-                    Open source consultancy session
-                  </option>
+                  <option value="openSource"> Open source consultancy session</option>
                   <option value="other">Other</option>
                 </Select>
               </FormControl>
@@ -90,7 +92,7 @@ const LandingSection = () => {
                   height={250}
                   {...formik.getFieldProps('comment')}
                 />
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
               <Button type="submit" colorScheme="purple" width="full">
                 Submit
