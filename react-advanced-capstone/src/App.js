@@ -6,7 +6,7 @@ import ContactMeSection from "./components/ContactMeSection";
 import Footer from "./components/Footer";
 import { AlertProvider } from "./context/alertContext";
 import Alert from "./components/Alert";
-
+// TODO: Full review code and clean up residuals before doing merge
 function App() {
   return (
     <ChakraProvider>
