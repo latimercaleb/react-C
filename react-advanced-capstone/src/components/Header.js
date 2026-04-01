@@ -10,21 +10,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack, Divider } from "@chakra-ui/react";
 
-function scrollIn(value) {
-  // When scrolling up have the bar slide into view
-  // Set translateY to 0 when scrolling up, and to -200% when scrolling down to hide the header
-  // You can use the useRef hook to keep track of the previous scroll position and compare it with the current scroll position to determine the scroll direction
-  // Use useeffect to add an event listener for the scroll event and update the translateY value accordingly
-  // Add a cleanup to the useeffect
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-
-function scrollOut(value) {
-  // SImilar to scrollIN, want to hide when scrolling down by having the bar slide out of view
+function generateTransformValue(newScrollPos, oldScrollPos) {
+  return newScrollPos > oldScrollPos ? -200 : 0; // Down : up
 }
 
 const socials = [
@@ -55,6 +42,21 @@ const socials = [
 ];
 
 const Header = () => {
+  // When scrolling up have the bar slide into view
+  // Set translateY to 0 when scrolling up, and to -200% when scrolling down to hide the header
+  // You can use the useRef hook to keep track of the previous scroll position and compare it with the current scroll position to determine the scroll direction
+  // Use useeffect to add an event listener for the scroll event and update the translateY value accordingly
+  // Add a cleanup to the useeffect
+  // SImilar to scrollIN, want to hide when scrolling down by having the bar slide out of view
+  const scrollRef = useRef(0);
+  useEffect(() => {
+
+    ref.current = value;
+    return ref.current;
+    return () => {
+      // CLeanupevent listener
+    }
+  }, []);
   const handleClick = (anchor) => () => {
     console.log(anchor)
     const id = `${anchor}-section`;
@@ -73,7 +75,7 @@ const Header = () => {
       top={0}
       left={0}
       right={0}
-      translateY={0}
+      translateY={transformationCallback}
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
