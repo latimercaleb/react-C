@@ -42,31 +42,22 @@ const socials = [
 ];
 
 const Header = () => {
-  // When scrolling up have the bar slide into view
-  // Set translateY to 0 when scrolling up, and to -200% when scrolling down to hide the header
-  // You can use the useRef hook to keep track of the previous scroll position and compare it with the current scroll position to determine the scroll direction
-  // Use useeffect to add an event listener for the scroll event and update the translateY value accordingly
-  // Add a cleanup to the useeffect
-  // SImilar to scrollIN, want to hide when scrolling down by having the bar slide out of view
   const scrollRef = useRef(0);
-  const {transformFunction, setTransformFunction} = useState("");
+  const [transformFunction, setTransformFunction] = useState("");
   useEffect(() => {
     const handleScrollEvent = () => {
       const latestScrollPosition = window.scrollY;
       const oldScrollPos = scrollRef.current;
-      console.log(scrollRef, scrollRef.current)
       scrollRef.current = latestScrollPosition;
-      const value = generateTransformValue(latestScrollPosition, oldScrollPos)
-      console.log(value)
-      setTransformFunction(`translateY(${value}px)`);
+      setTransformFunction(`translateY(${generateTransformValue(latestScrollPosition, oldScrollPos)}px)`);
     }
     window.addEventListener("scroll", handleScrollEvent);
     return () => {
       window.removeEventListener("scroll", handleScrollEvent);
     }
   }, []);
+
   const handleClick = (anchor) => () => {
-    console.log(anchor)
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
