@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -49,12 +49,20 @@ const Header = () => {
   // Add a cleanup to the useeffect
   // SImilar to scrollIN, want to hide when scrolling down by having the bar slide out of view
   const scrollRef = useRef(0);
+  const {transformFunction, setTransformFunction} = useState("");
   useEffect(() => {
-
-    ref.current = value;
-    return ref.current;
+    const handleScrollEvent = () => {
+      const latestScrollPosition = window.scrollY;
+      const oldScrollPos = scrollRef.current;
+      console.log(scrollRef, scrollRef.current)
+      scrollRef.current = latestScrollPosition;
+      const value = generateTransformValue(latestScrollPosition, oldScrollPos)
+      console.log(value)
+      setTransformFunction(`translateY(${value}px)`);
+    }
+    window.addEventListener("scroll", handleScrollEvent);
     return () => {
-      // CLeanupevent listener
+      window.removeEventListener("scroll", handleScrollEvent);
     }
   }, []);
   const handleClick = (anchor) => () => {
@@ -75,7 +83,7 @@ const Header = () => {
       top={0}
       left={0}
       right={0}
-      translateY={transformationCallback}
+      transform={transformFunction}
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
