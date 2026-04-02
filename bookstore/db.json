@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+      "title": "Sonic Adventure",
+      "id": 2
+    },
+    {
+      "title": "Dragon Ball GX",
+      "id": 3
+    },
+    {
+      "title": "X files IV",
+      "id": 4
+    },
+    {
+      "title": "Shinobi: Hotsuma",
+      "id": 6
+    },
+    {
+      "title": "Ronin gaming",
+      "id": 7
+    }
+  ]
+}

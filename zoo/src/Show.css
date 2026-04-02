@@ -1,0 +1,9 @@
+.animal {
+    height: 200px
+}
+
+.animal-heart {
+    position: absolute;
+    bottom:10%;
+    right: 10%;
+}
