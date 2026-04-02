@@ -1,3 +1,28 @@
+/*CSS tricks*/
+html {
+  scroll-behavior: smooth; /*Enable smooth scroll*/
+}
+
+.glass-card {
+  /*Glassmorphism sample*/
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+  /*Animation sample small hover*/
+.button {
+  background: #0078d4;
+  color: white;
+  padding: 10px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .opener{
   @apply text-3xl font-bold underline-offset-0 underline
